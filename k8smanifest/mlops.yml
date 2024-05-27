@@ -12,7 +12,7 @@ spec:
         app: mlopsapp
     spec:
       containers:
-      - name: mlopsappcontaier
+      - name: mlopsappcontainer
         image: pavanvarikolu/mlopsproject:v1.0.0
         resources:
           limits:
@@ -25,12 +25,12 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name:  Service Name
+  name: mlopsapp-service
 spec:
   selector:
-    app:  Selector Label
-  type:  LoadBalancer
+    app: mlopsapp
+  type: LoadBalancer
   ports:
-  - name:  name-of-the-port
-    port:  8000
-    targetPort:  8000
+  - name: http
+    port: 8000
+    targetPort: 8000
