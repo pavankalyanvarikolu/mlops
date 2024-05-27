@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mlopsapp
+spec:
+  selector:
+    matchLabels:
+      app: mlopsapp
+  template:
+    metadata:
+      labels:
+        app: mlopsapp
+    spec:
+      containers:
+      - name: mlopsappcontaier
+        image: pavanvarikolu/mlopsproject:v1.0.0
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8000
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name:  Service Name
+spec:
+  selector:
+    app:  Selector Label
+  type:  LoadBalancer
+  ports:
+  - name:  name-of-the-port
+    port:  8000
+    targetPort:  8000
